@@ -1,11 +1,14 @@
-import { Container } from "@chakra-ui/react"
+import { Container, useColorModeValue } from "@chakra-ui/react"
 
-function ArticleLayout({children}) {
-    return function name(params) {
-        return (
-            <Container marginTop={10} maxW="container.xl" centerContent>
-                {children}
-            </Container>
-        )
-    }
+export default function ArticleLayout({children}) {
+    return (
+        <Container 
+            marginTop={10} 
+            maxW="container.xl" 
+            centerContent
+            bg={useColorModeValue("#A7D0CD", "#112031")}
+        >
+            {children}
+        </Container>
+    )
 }
