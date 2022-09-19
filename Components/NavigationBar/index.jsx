@@ -7,6 +7,8 @@ import { IconButton } from "@chakra-ui/button";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 
+import { styles } from "../../styles/theme";
+
 export const NavigationBar = () => {
   const {toggleColorMode} = useColorMode();
   return (
@@ -19,7 +21,7 @@ export const NavigationBar = () => {
       zIndex={1}
     >
       <Center>
-        <Grid templateColumns="2fr 1fr 1fr 1fr" gap={8}>
+        <Grid templateColumns="2fr 1fr 1fr 1fr 1fr" gap={8}>
           
           <Grid gap={8}>
             <Center>
@@ -28,6 +30,10 @@ export const NavigationBar = () => {
               </GridItem>
               <Link href="/">Gabriel Gollo</Link>
             </Center>
+          </Grid>
+
+          <Grid>
+            <Center><Link href="/">Home</Link></Center>
           </Grid>
 
           <Grid>

@@ -6,7 +6,7 @@ export default function ArticleLayout({children}) {
             marginTop={10} 
             maxW="container.xl" 
             centerContent
-            bg={useColorModeValue("#A7D0CD", "#112031")}
+            color={useColorModeValue("gray.100", "gray.200")}
         >
             {children}
         </Container>
