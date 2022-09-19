@@ -50,6 +50,7 @@ export const RubikCube = () => {
         const renderer = new THREE.WebGLRenderer({
             canvas, 
             antialias: true,
+            alpha: true,
         });
         renderer.setPixelRatio(window.devicePixelRatio)
         renderer.setSize(scW, scH)
@@ -82,7 +83,6 @@ export const RubikCube = () => {
         const controls = new OrbitControls(camera, renderer.domElement)
         controls.autoRotate = true
         controls.target = target
-        scene.background = new THREE.Color( '#00000000' );
         loadGLTFModel(scene, '/rubik.glb', {
             receiveShadow: false,
             castShadow: true
