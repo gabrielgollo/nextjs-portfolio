@@ -2,13 +2,13 @@ import { useRouter } from "next/dist/client/router";
 import Image from "next/image"
 import Link from "next/link";
 
-import { Box, Center, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
+import { Box, Center, Container, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
 import { Img } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/button";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 
-export const NavigationBar = (props) => {
+export const NavigationBar = () => {
   const {toggleColorMode} = useColorMode();
   return (
     <Box 
