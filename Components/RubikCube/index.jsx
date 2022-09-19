@@ -1,9 +1,7 @@
 import * as THREE from "three";
 
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 import { Box, Center } from "@chakra-ui/layout";
-import { useColorModeValue } from "@chakra-ui/color-mode";
-import { createRef, useEffect, useState } from "react";
+import { createRef, useEffect, useState, useCallback } from "react";
 import {  } from "react";
 import { loadGLTFModel } from "../../lib/model";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -16,6 +14,7 @@ function easeOutCirc(x) {
 
 export const RubikCube = () => {
     const [loading, setLoading] = useState(true)
+    const [renderer, setRenderer] = useState(null);
     const ref = createRef()
 
     const animate = () => {
@@ -40,6 +39,16 @@ export const RubikCube = () => {
         renderer.render(scene, camera)
       }
 
+      const handleWindowResize = useCallback(() => {
+        const { current: canvas } = ref
+        if (canvas && renderer) {
+          const scW = canvas.clientWidth
+          const scH = canvas.clientHeight
+    
+          renderer.setSize(scW, scH)
+        }
+      }, [])
+
     useEffect(() => {
         
         
@@ -52,6 +61,9 @@ export const RubikCube = () => {
             antialias: true,
             alpha: true,
         });
+
+        setRenderer(renderer)
+
         renderer.setPixelRatio(window.devicePixelRatio)
         renderer.setSize(scW, scH)
         renderer.outputEncoding = THREE.sRGBEncoding
@@ -64,13 +76,13 @@ export const RubikCube = () => {
             20 * Math.cos(0.2 * Math.PI)
         )
 
-        const scale = scH * 0.0005 + 4.8
+        const scale = scH * 0.005 +  1.0
         const camera = new THREE.OrthographicCamera(
             -scale,
             scale,
             scale,
             -scale,
-            0.01,
+            0.1,
             50000
         )
 
@@ -123,17 +135,21 @@ export const RubikCube = () => {
         
     }, [])
 
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize, false)
+        return () => {
+          window.removeEventListener('resize', handleWindowResize, false)
+        }
+      }, [handleWindowResize])
+
     return(
         <Box>
             <Center>
                 <canvas 
                     ref={ref}
                     id="threejs-art"
-                    width={400}
-                    height={400}
-                    style={{
-                        background: useColorModeValue("white", "gray.800"),
-                    }}
+                    width={300}
+                    height={300}
                 />
             </Center>
         </Box>
