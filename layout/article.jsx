@@ -4,7 +4,7 @@ export default function ArticleLayout({children}) {
     return (
         <Container 
             marginTop={10} 
-            maxW="container.xl" 
+            maxW="30em" 
             centerContent
             color={useColorModeValue("black", "gray.200")}
         >
