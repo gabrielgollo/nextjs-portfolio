@@ -69,14 +69,14 @@ export const RubikCube = () => {
         renderer.outputEncoding = THREE.sRGBEncoding
         const scene = new THREE.Scene()
 
-        const target = new THREE.Vector3(-0.5, 1.2, 0)
+        const target = new THREE.Vector3(-0.5, 1.5, 0)
         const initialCameraPosition = new THREE.Vector3(
             20 * Math.sin(0.2 * Math.PI),
-            10,
+            -100,
             20 * Math.cos(0.2 * Math.PI)
         )
 
-        const scale = scH * 0.005 +  1.0
+        const scale = scH * 0.005 +  1.1
         const camera = new THREE.OrthographicCamera(
             -scale,
             scale,
@@ -97,7 +97,7 @@ export const RubikCube = () => {
         controls.target = target
         loadGLTFModel(scene, '/rubik.glb', {
             receiveShadow: false,
-            castShadow: true
+            castShadow: false
           }).then(() => {
             animate()
             setLoading(false)
@@ -115,7 +115,7 @@ export const RubikCube = () => {
             const p = initialCameraPosition
             const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
 
-            camera.position.y = 10
+            camera.position.y = 100
             camera.position.x =
                 p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
             camera.position.z =
@@ -148,8 +148,8 @@ export const RubikCube = () => {
                 <canvas 
                     ref={ref}
                     id="threejs-art"
-                    width={300}
-                    height={300}
+                    width={200}
+                    height={200}
                 />
             </Center>
         </Box>
