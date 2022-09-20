@@ -4,6 +4,7 @@ import Head from "next/head";
 import Footer from "../Components/Footer";
 import { NavigationBar } from "../Components/NavigationBar";
 import { RubikCube } from "../Components/RubikCube";
+import Section from "../Components/Section";
 
 export default function Layout({ children }) {
   return (
@@ -13,10 +14,13 @@ export default function Layout({ children }) {
         <title>{process.env.NEXT_PUBLIC_TITLE}</title>
       </Head>
       <Container pt={14} maxW="container.xl" centerContent>
-        <RubikCube />
+        <Section delay={0.2}>
+          <RubikCube />
+        </Section>
 
-        {children}
-
+        <Section delay={0.3}>
+          {children}
+        </Section>
         <Footer />
       </Container>
     </Box>

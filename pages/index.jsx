@@ -2,12 +2,19 @@ import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image"
 import ArticleLayout from "../layout/article";
+import Section from "../Components/Section";
 
 export default function HomePageApp() {
+
+  const paragraphStyle = {
+    textAlign: "justify",
+    textIndent: "1em",
+  }
+
   return (
     <ArticleLayout>
       <Box
-          borderRadius="lg"
+          borderradius="lg"
           mb={6}
           p={3}
           textAlign="center"
@@ -26,7 +33,7 @@ export default function HomePageApp() {
             <Heading as="h2" variant="page-title">
               Gabriel Gollo
             </Heading>
-            <p>Software Developer / Automation and Control Student / Gamer</p>
+            <p style={paragraphStyle}>Software Developer / Automation and Control Student / Gamer</p>
           </Box>
         </Box>
         <Box
@@ -48,12 +55,35 @@ export default function HomePageApp() {
               <Image
                 src="/images/gabrielgollo.jpg"
                 alt="Profile image"
-                borderRadius="full"
+                borderradius="full"
                 width="100%"
                 height="100%"
               />
             </Box>
           </Box>
+
+          <Section delay={0.1}>
+            <Heading as="h3" variant="section-title">
+              About me
+            </Heading>
+            <p
+              style={paragraphStyle}
+            >
+              Hi there! =)
+            </p>
+            <p
+              style={paragraphStyle}
+            >
+              I&apos;m a control and automation engineering student and an enthusiast for testing new technologies. 
+              I can say that I love technology, programming, and innovation! Cause most of my time is spent studying IOT, eletrical engineering and programming. 
+              Have I mentioned that I love understanding how things work? haha
+              Oh! And I love to play games.
+
+              Interested? Take a look at my GitHub.
+            </p>
+              
+            
+          </Section>
         </Box>
     </ArticleLayout>
   )
