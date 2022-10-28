@@ -1,20 +1,19 @@
-import { Link, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import NextLink from "next/link"
-import { Box, Center, Container, Flex, Grid, GridItem, Stack } from "@chakra-ui/layout";
-import { IconButton } from "@chakra-ui/button";
-import { SunIcon, MoonIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
-import { Icon } from "@iconify/react";
-
+import { Link, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import NextLink from 'next/link'
+import { Box, Container, Flex, Stack } from '@chakra-ui/layout'
+import { IconButton } from '@chakra-ui/button'
+import { SunIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode'
+import { Icon } from '@iconify/react'
 
 export const NavigationBar = () => {
-  const {toggleColorMode} = useColorMode();
+  const { toggleColorMode } = useColorMode()
   return (
-    <Box 
-      position="fixed" 
-      as="nav" 
-      bgColor={useColorModeValue("#A7D0CD", "#112031")} 
-      color={useColorModeValue("#000000", "#FFFFFF")}
+    <Box
+      position="fixed"
+      as="nav"
+      bgColor={useColorModeValue('#FAF3E1', '#222B46')}
+      color={useColorModeValue('#000000', 'whitesmoke')}
       w="100%"
       zIndex={1}
     >
@@ -26,25 +25,25 @@ export const NavigationBar = () => {
         align="center"
         justify="space-around"
       >
-        <Flex align="center" mr={5} style={{ fontWeight:500}}>
+        <Flex align="center" mr={5} style={{ fontWeight: 500 }}>
             <Link href="/" display="inline-flex" alignItems="center">
-              <MoonIcon />
                Gabriel Gollo
+               <Icon icon='twemoji:bird' />
             </Link>
         </Flex>
 
         <Stack
-          direction={{ base: "column", sm: "row" }}
-          display={{ base: "none", sm: "flex" }}
-          width={{ base: "full", sm: "auto" }}
+          direction={{ base: 'column', sm: 'row' }}
+          display={{ base: 'none', sm: 'flex' }}
+          width={{ base: 'full', sm: 'auto' }}
           alignItems="center"
-          flexGrow={2}
+          flexGrow={1}
           mt={{ base: 4, sm: 0 }}
           justify="space-around"
           fontWeight={500}
         >
           <Link href="/" display="inline-flex" >Home</Link>
-          <Link href="/contact" display="inline-flex" >Contact</Link>
+          {/* <Link href="/contact" display="inline-flex" >Contact</Link> */}
           {/* <Link href="/about" display={"inline-flex"}>About</Link> */}
           <Link href="https://github.com/gabrielgollo" display="inline-flex" alignItems="center" isExternal>
             <Icon icon="akar-icons:github-fill" />
@@ -55,10 +54,7 @@ export const NavigationBar = () => {
         <Box flex={1} align="right">
           <IconButton width="40px" onClick={toggleColorMode}><SunIcon /></IconButton>
 
-          
-        
-
-        <Box ml={2} display={{ base: "inline-block", sm: "none" }}>
+        <Box ml={2} display={{ base: 'inline-block', sm: 'none' }}>
             <Menu isLazy={true} id="navbar-menu">
               <MenuButton
                 as={IconButton}
@@ -70,13 +66,14 @@ export const NavigationBar = () => {
                 <NextLink href="/" passHref>
                   <MenuItem as={Link}>Home</MenuItem>
                 </NextLink>
-                <NextLink href="/contact" passHref>
+                {/* <NextLink href="/contact" passHref>
                   <MenuItem as={Link}>Contact</MenuItem>
-                </NextLink>
+                </NextLink> */}
                 <MenuItem
                   as={Link}
                   href="https://github.com/gabrielgollo"
                   display="inline-flex"
+                  isExternal
                 >
                   <Icon icon="akar-icons:github-fill" />
                    Github
@@ -85,7 +82,7 @@ export const NavigationBar = () => {
             </Menu>
           </Box>
         </Box>
-      </Container> 
+      </Container>
     </Box>
-  );
-};
+  )
+}
