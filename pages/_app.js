@@ -1,8 +1,8 @@
-import { ChakraProvider } from "@chakra-ui/react"
-import Layout from "../layout/main"
-import theme from "../styles/theme.jsx"
-
-function WebConfig({ Component, pageProps }) {
+import { ChakraProvider } from '@chakra-ui/react'
+import Layout from '../layout/main'
+import theme from '../styles/theme.jsx'
+import PropTypes from 'prop-types'
+function WebConfig ({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <Layout>
@@ -10,6 +10,11 @@ function WebConfig({ Component, pageProps }) {
       </Layout>
     </ChakraProvider>
   )
+}
+
+WebConfig.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired
 }
 
 export default WebConfig
